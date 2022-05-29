@@ -1,0 +1,247 @@
+body {
+	background: #e9ecef
+}
+
+.toDoTemplateBlock {
+	width: 512px;
+	height: 768px;
+	position: relative;
+	background-color: white;
+	border-radius: 16px;
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	margin-top: 96px;
+	margin-bottom: 32px;
+	display: flex;
+	flex-direction: column;
+}
+
+.toDoHeadBlock {
+	padding: 48px 32px 24px 32px;
+	border-bottom: 1px solid #e9ecef;
+}
+
+.toDoHeadBlock h1 {
+	margin: 0;
+	font-size: 36px;
+	color: #343a40;
+}
+
+.toDoHeadBlock-day {
+	margin-top: 4px;
+	color: #868e96;
+	font-size: 21px;
+}
+
+.toDoHeadBlock-tasks-left {
+	color: #20c997;
+	font-size: 18px;
+	margin-top: 40px;
+	font-weight: bold;
+}
+
+.toDoListBlock {
+	flex:1;
+    padding:20px 32px;
+    padding-bottom:48px;
+    overflow-y:auto;
+}
+
+.toDoItemBlock {
+	display:flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.toDoItemBlock-checkCircle {
+	width:32px;
+    height:32px;
+    border-radius:16px;
+    border:1px solid #ced4da;
+    color : #ced4da;
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:20px;
+    cursor: pointer;
+}
+
+.toDoItemBlock-checkCircle:hover {
+	border:1px solid #20c997;
+}
+
+.toDoItemBlock-text {
+	flex:1;
+    font-size:21px;
+    color: #495057;
+    margin-right:20px;
+}
+
+.toDoItemBlock-modify {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #dee2e6;
+    font-size:24px;
+    cursor:pointer;
+    margin-right:20px;
+}
+
+.toDoItemBlock-modify:hover {
+	color:#ff6b6b;
+}
+
+.toDoItemBlock-remove {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #dee2e6;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.toDoItemBlock-remove:hover {
+	color:#ff6b6b;
+}
+
+
+
+.toDoUpdateBlock {
+	display:flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.toDoUpdateBlock-update {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #dee2e6;
+    font-size:24px;
+    margin-right:20px;
+    cursor:pointer;
+    
+}
+.toDoUpdateBlock-update:hover {
+	color:#ff6b6b;
+}
+
+.toDoUpdateBlock-cancel {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #dee2e6;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.toDoUpdateBlock-cancel:hover {
+	color:#ff6b6b;
+}
+
+.toDoUpdateBlock-checkCircle {
+	width:32px;
+    height:32px;
+    border-radius:16px;
+    border:1px solid #ced4da;
+    color : #ced4da;
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:20px;
+}
+
+.toDoUpdateBlock-input {
+	border-radius:5px;
+	border: 1px solid #ced4da;
+	flex:1;
+    font-size:21px;
+    color: #495057;
+    margin-right:20px;
+}
+
+
+.toDoInsertBlock{
+	display:flex;
+    align-items: center;
+    justify-content:center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.toDoInsertBlock-input {
+	border-radius:5px;
+	border: 1px solid #ced4da;
+	flex:1;
+    font-size:21px;
+    color: #495057;
+    margin-right:20px;
+}
+
+.toDoInsertBlock-insert {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #dee2e6;
+    font-size:24px;
+    cursor:pointer;
+    margin-right:20px;
+}
+
+.toDoInsertBlock-insert:hover {
+	color:#ff6b6b;
+}
+
+.toDoInsertBlock-cancel {
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #dee2e6;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.toDoInsertBlock-cancel:hover {
+	color:#ff6b6b;
+}
+
+.toDoPlusBlock {
+	display:flex;
+    align-items: center;
+    justify-content:center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+.toDoPlus {
+	width:32px;
+    height:32px;
+    border-radius:16px;
+    border:1px solid #ced4da;
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:20px;
+    cursor: pointer;
+}
+
+.toDoPlus:hover {
+	border:1px solid #ff6b6b;
+	color : #ff6b6b;
+}
+
+

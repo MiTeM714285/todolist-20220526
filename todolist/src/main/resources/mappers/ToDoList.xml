@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.springboot.todolist.domain.todolist.ToDoListRepository">
+  	<insert id="addToDo" parameterType="com.springboot.todolist.domain.todolist.ToDoListMst" useGeneratedKeys="true" keyProperty="id">
+		insert into todolist_mst(id, content, isdone, create_date, update_date) 
+		values(0,#{content},0,now(),now())
+	</insert>
+	
+	<select id="getListAll" resultType="com.springboot.todolist.domain.todolist.ToDoListMst">
+		select id, content, isdone, create_date, update_date from todolist_mst
+	</select>
+	
+	<select id="getToDo" resultType="com.springboot.todolist.domain.todolist.ToDoListMst">
+		select id, content, isdone, create_date, update_date from todolist_mst where id=#{id}
+	</select>
+	
+	<select id="getIsUndoneCount" resultType="Integer">
+		select count(isdone) from todolist_mst where isdone=0;
+	</select>
+	
+	<update id="modifyTodo" parameterType="com.springboot.todolist.domain.todolist.ToDoListMst" useGeneratedKeys="true" keyProperty="id">
+		update todolist_mst set content=#{content}, update_date=now() where id=#{id}
+	</update>
+	
+	<update id="modifyIsDone" parameterType="Integer">
+		update todolist_mst set isdone=1 where id=#{id}
+	</update>
+	
+	<update id="modifyIsUnDone" parameterType="Integer">
+		update todolist_mst set isdone=0 where id=#{id}
+	</update>
+	
+	<delete id="removeTodo" parameterType="Integer">
+		delete from todolist_mst where id=#{id}
+	</delete>
+  </mapper>
