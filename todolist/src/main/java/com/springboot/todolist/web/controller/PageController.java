@@ -10,5 +10,10 @@ public class PageController {
 	public String index() {
 		return "todoList/todoList";
 	}
+	
+	@GetMapping("/auth/signin") // 로그인
+	public String signin() {
+		return "auth/signin";
+	}
 
 }

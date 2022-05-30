@@ -14,14 +14,13 @@ import org.springframework.validation.FieldError;
 
 import com.springboot.todolist.handler.ex.CustomValidationApiException;
 
-
 @Aspect
 @Component
 public class ValidationAdvice {
 	
 	private final Logger LOGGER = LoggerFactory.getLogger(ValidationAdvice.class);
 
-	@Around("execution(* com.springboot.study.web.api.*Controller.*(..))") // 모든 Controller를 포함한 클래스에 접근. *(..)는 매개변수를 0개 이상(..) 받는 모든 메소드(*)에 접근한다는 의미
+	@Around("execution(* com.springboot.todolist.web.api.*Controller.*(..))") // 모든 Controller를 포함한 클래스에 접근. *(..)는 매개변수를 0개 이상(..) 받는 모든 메소드(*)에 접근한다는 의미
 	public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable { // Throwable : exception의 최상위, proceedingJoinPoint는 해당 메소드 자체를 의미
 		
 		Object[] args = proceedingJoinPoint.getArgs(); // 가져온 메소드의 매개변수를 가져오기

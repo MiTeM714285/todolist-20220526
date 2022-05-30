@@ -289,16 +289,23 @@ function ToDoListIsUnDone(id) {
 }
 
 function setDate() {
-	const today = new Date(); // 오늘 날짜
-    const dateString = today.toLocaleDateString('ko-KR', {
+	const today = new Date();
+    const dateString = today.toLocaleDateString('ko-KR', { // 오늘 날짜 가져오기
         year:'numeric',
         month:'long',
         day: 'numeric'
     });
-	const dayName = today.toLocaleDateString('ko-KR', { // 오늘 요일
-	        weekday:'long'
-	    });
-	getIsUndoneCount()
+	const dayName = today.toLocaleDateString('ko-KR', { // 오늘 요일 가져오기
+	    weekday:'long'
+	});
+
+	getAuthenticationReq() // auth/principal.js 의 함수, promise로 return된 값
+	// 첫번째, principal의 사용자 name 가져오기
+	.then(result => {
+		let principal = result.data.user;
+			let name = principal.name;
+		getIsUndoneCount()
+		// 두번째, isUndoneCount 가져오기
 		.then(result => {
 			let isUndoneCount = result.data
 			
@@ -306,13 +313,17 @@ function setDate() {
 			const days = `
 				<h1>${dateString}</h1>
 			    <div class="toDoHeadBlock-day">${dayName}</div>
-				<div class="toDoHeadBlock-tasks-left">할 일 ${isUndoneCount}개 남음</div>
+				<div class="toDoHeadBlock-tasks-left">${name}님의 할 일 ${isUndoneCount}개 남음</div>
 			`
 			toDoHeadBlock.innerHTML = days;
 		})
 		.catch(error => {
 			console.log(error)
 		})
+	})
+	.catch(error => {
+		console.log(error)
+	})
 }
 
 function getTodoListList(data) { // 응답받은 CustomResponseDto의 data로 게시글리스트 출력 메소드
