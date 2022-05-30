@@ -9,8 +9,8 @@ public interface ToDoListRepository {
 	
 	public int addToDo(ToDoListMst todoListMst);
 	public ToDoListMst getToDo(int id);
-	public List<ToDoListMst> getListAll();
-	public int getIsUndoneCount();
+	public List<ToDoListMst> getListAll(int usercode);
+	public int getIsUndoneCount(int usercode);
 	public int modifyTodo(ToDoListMst todoListMst);
 	public int modifyIsDone(int id);
 	public int modifyIsUnDone(int id);

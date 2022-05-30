@@ -8,10 +8,10 @@ import com.springboot.todolist.web.controller.dto.todolist.ToDoListUpdateReqDto;
 
 public interface ToDoListService {
 	
-	public int addToDo(ToDoListInsertReqDto toDoListInsertReqDto) throws Exception;
+	public int addToDo(int usercode, ToDoListInsertReqDto toDoListInsertReqDto) throws Exception;
 	public ToDoListRespDto getToDo(int id) throws Exception;
-	public List<ToDoListRespDto> getListAll() throws Exception;
-	public int getIsUndoneCount() throws Exception;
+	public List<ToDoListRespDto> getListAll(int usercode) throws Exception;
+	public int getIsUndoneCount(int usercode) throws Exception;
 	public int modifyTodo(int id, ToDoListUpdateReqDto toDoListUpdateReqDto) throws Exception;
 	public int modifyIsDone(int id) throws Exception;
 	public int modifyIsUnDone(int id) throws Exception;

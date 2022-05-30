@@ -20,8 +20,8 @@ public class ToDoListServiceImpl implements ToDoListService{
 	private final ToDoListRepository toDoListRepository;
 
 	@Override
-	public int addToDo(ToDoListInsertReqDto toDoListInsertReqDto) throws Exception{
-		ToDoListMst toDoListMst = toDoListInsertReqDto.toToDoListMstEntity();
+	public int addToDo(int usercode, ToDoListInsertReqDto toDoListInsertReqDto) throws Exception{
+		ToDoListMst toDoListMst = toDoListInsertReqDto.toToDoListMstEntity(usercode);
 		int result = toDoListRepository.addToDo(toDoListMst);
 		if(result > 0) {
 			return toDoListMst.getId();
@@ -30,9 +30,9 @@ public class ToDoListServiceImpl implements ToDoListService{
 	}
 
 	@Override
-	public List<ToDoListRespDto> getListAll() throws Exception {
+	public List<ToDoListRespDto> getListAll(int usercode) throws Exception {
 		List<ToDoListRespDto> toDoListRespDtos = new ArrayList<ToDoListRespDto>();
-		List<ToDoListMst> toDoListListAll = toDoListRepository.getListAll();
+		List<ToDoListMst> toDoListListAll = toDoListRepository.getListAll(usercode);
 		for(ToDoListMst element : toDoListListAll) {
 			toDoListRespDtos.add(ToDoListRespDto.builder()
 					.id(element.getId())
@@ -46,9 +46,9 @@ public class ToDoListServiceImpl implements ToDoListService{
 	}
 	
 	@Override
-	public int getIsUndoneCount() throws Exception {
+	public int getIsUndoneCount(int usercode) throws Exception {
 		// TODO Auto-generated method stub
-		return toDoListRepository.getIsUndoneCount();
+		return toDoListRepository.getIsUndoneCount(usercode);
 	}
 	
 	@Override

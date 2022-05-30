@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ToDoListMst {
 	private int id;
-	//private int usercode;
+	private int usercode;
 	private String content;
 	private int isdone;
 	private LocalDateTime create_date;

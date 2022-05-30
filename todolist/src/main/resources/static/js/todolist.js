@@ -8,21 +8,33 @@ const idArray = [];
 load();
 
 function load() {
-	let url = "/api/v1/todo/list"
-	fetch(url)
-		.then(response => {
-			if (response.ok) {
-				return response.json();
-			} else {
-				throw new Error("비동기 처리 오류");
-			}
-		})
-		.then(result => { // 받아온 ResponseEntity객체.
-			setDate(); // 오늘 날짜 및 할 일 갯수 표시
-			getTodoListList(result.data, null); // 응답받은 CustomResponseDto의 data
-			getTodoListItems();
-		})
-		.catch(error => { console.log(error) });
+	
+	getAuthenticationReq() // authentication/principal.js 의 함수, promise로 return된 값
+	.then(result => {
+		let principal = result.data.user;
+		let usercode = principal.usercode;
+		
+		let url = `/api/v1/todo/list/${usercode}`
+		fetch(url)
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					throw new Error("비동기 처리 오류");
+				}
+			})
+			.then(result => { // 받아온 ResponseEntity객체.
+				setDate(); // 오늘 날짜 및 할 일 갯수 표시
+				getTodoListList(result.data, null); // 응답받은 CustomResponseDto의 data
+				getTodoListItems();
+			})
+			.catch(error => { console.log(error) });
+		
+	})
+	.catch(error => {
+		console.log(error)
+	});
+
 }
 
 function getTodoListItems() { // 각 버튼을 클릭했을때의 이벤트 담당
@@ -135,30 +147,40 @@ function getTodoListItems() { // 각 버튼을 클릭했을때의 이벤트 담�
 }
 
 function InsertToDoList(content) {
-	let url = "/api/v1/todo";
-
-	let option = {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify({
-			content: content
-		})
-	};
-	fetch(url, option)
-		.then(response => { // 응답을 받음
-			console.log(response);
-			if (response.ok) { // 200~299 응답일시
-				return response.json();
-			} else {
-				throw new Error(response.json());
-			}
-		})
-		.then(data => { 
-			load();
-		})
-		.catch(error => console.log(error));
+	
+	getAuthenticationReq() // authentication/principal.js 의 함수, promise로 return된 값
+	.then(result => {
+		let principal = result.data.user;
+		usercode = principal.usercode;
+		
+		let url = `/api/v1/todo/${usercode}`;
+		let option = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				content: content
+			})
+		};
+		fetch(url, option)
+			.then(response => { // 응답을 받음
+				console.log(response);
+				if (response.ok) { // 200~299 응답일시
+					return response.json();
+				} else {
+					throw new Error(response.json());
+				}
+			})
+			.then(data => { 
+				load();
+			})
+			.catch(error => console.log(error));
+		
+	})
+	.catch(error => {
+		console.log(error)
+	});
 
 }
 
@@ -188,7 +210,17 @@ async function getToDoListOne(id) {
 }
 
 async function getIsUndoneCount() {
-	const url = `/api/v1/todo/isUndoneCount`;
+	
+	let usercode = {};
+	await getAuthenticationReq() // authentication/principal.js 의 함수, promise로 return된 값
+	.then(result => {
+		let principal = result.data.user;
+		usercode = principal.usercode;
+	})
+	.catch(error => {
+		console.log(error)
+	});
+	const url = `/api/v1/todo/isUndoneCount/${usercode}`;
 	
 	const response = await fetch(url);
 	if(response.ok) {
@@ -196,6 +228,8 @@ async function getIsUndoneCount() {
 	} else {
 		throw new Error("Failed to get Authentication." + response)
 	}
+	
+
 }
 
 async function getToDoListOne(id) {

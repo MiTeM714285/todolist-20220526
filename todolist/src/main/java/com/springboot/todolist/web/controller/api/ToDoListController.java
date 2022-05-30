@@ -31,9 +31,9 @@ public class ToDoListController {
 	
 	private final ToDoListService toDoListService;
 	
-	@GetMapping("/todo/list") // 리스트 전체 들고오기
-	public ResponseEntity<?> getListAll() throws Exception {
-		List<ToDoListRespDto> toDoListRespDtos = toDoListService.getListAll();
+	@GetMapping("/todo/list/{usercode}") // 리스트 전체 들고오기
+	public ResponseEntity<?> getListAll(@PathVariable int usercode) throws Exception {
+		List<ToDoListRespDto> toDoListRespDtos = toDoListService.getListAll(usercode);
 		return new ResponseEntity<>(new CustomResponseDto<List<ToDoListRespDto>>(1, "ToDoList 목록 로드" , toDoListRespDtos), HttpStatus.OK);
 	}
 	
@@ -43,15 +43,15 @@ public class ToDoListController {
 		return new ResponseEntity<>(new CustomResponseDto<ToDoListRespDto>(1, "ToDoList 한개 로드" , toDoListRespDtos), HttpStatus.OK);
 	}
 	
-	@GetMapping("/todo/isUndoneCount")
-	public ResponseEntity<?> getIsUndoneCount() throws Exception {
-		int isUndoneCount = toDoListService.getIsUndoneCount();
+	@GetMapping("/todo/isUndoneCount/{usercode}")
+	public ResponseEntity<?> getIsUndoneCount(@PathVariable int usercode) throws Exception {
+		int isUndoneCount = toDoListService.getIsUndoneCount(usercode);
 		return new ResponseEntity<>(new CustomResponseDto<Integer>(1, "isUndoneCount 갯수 로드" , isUndoneCount), HttpStatus.OK);
 	}
 	
-	@PostMapping("/todo") // 내용 추가
-	public ResponseEntity<?> addToDo(@Valid @RequestBody ToDoListInsertReqDto toDoListInsertReqDto, BindingResult bindingResult) throws Exception {
-		int id = toDoListService.addToDo(toDoListInsertReqDto);
+	@PostMapping("/todo/{usercode}") // 내용 추가
+	public ResponseEntity<?> addToDo(@PathVariable int usercode, @Valid @RequestBody ToDoListInsertReqDto toDoListInsertReqDto, BindingResult bindingResult) throws Exception {
+		int id = toDoListService.addToDo(usercode, toDoListInsertReqDto);
 		return new ResponseEntity<>(new CustomResponseDto<Integer>(1, "글 작성 완료", id), HttpStatus.OK);
 	}
 	

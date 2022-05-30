@@ -4,20 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.springboot.todolist.domain.todolist.ToDoListRepository">
   	<insert id="addToDo" parameterType="com.springboot.todolist.domain.todolist.ToDoListMst" useGeneratedKeys="true" keyProperty="id">
-		insert into todolist_mst(id, content, isdone, create_date, update_date) 
-		values(0,#{content},0,now(),now())
+		insert into todolist_mst(id, usercode, content, isdone, create_date, update_date)
+		values(0, #{usercode}, #{content},0,now(),now())
 	</insert>
 	
-	<select id="getListAll" resultType="com.springboot.todolist.domain.todolist.ToDoListMst">
-		select id, content, isdone, create_date, update_date from todolist_mst
+	<select id="getListAll" parameterType="Integer" resultType="com.springboot.todolist.domain.todolist.ToDoListMst">
+		select id, content, isdone, create_date, update_date from todolist_mst where usercode=#{usercode}
 	</select>
 	
 	<select id="getToDo" resultType="com.springboot.todolist.domain.todolist.ToDoListMst">
 		select id, content, isdone, create_date, update_date from todolist_mst where id=#{id}
 	</select>
 	
-	<select id="getIsUndoneCount" resultType="Integer">
-		select count(isdone) from todolist_mst where isdone=0;
+	<select id="getIsUndoneCount" parameterType="Integer" resultType="Integer">
+		select count(isdone) from todolist_mst where isdone=0 and usercode=#{usercode};
 	</select>
 	
 	<update id="modifyTodo" parameterType="com.springboot.todolist.domain.todolist.ToDoListMst" useGeneratedKeys="true" keyProperty="id">

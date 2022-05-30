@@ -3,7 +3,7 @@
  */
 
 async function getAuthenticationReq() {
-	const url = "/api/v1/authentication";
+	const url = "/api/v1/auth/authentication";
 	
 	const response = await fetch(url);
 	if(response.ok) {
