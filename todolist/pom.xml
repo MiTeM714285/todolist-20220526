@@ -11,6 +11,7 @@
 	<groupId>com.springboot</groupId>
 	<artifactId>todolist</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>todolist</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -56,6 +57,14 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
+		
+		<!-- tomcat 은 기본적으로 추가되어 있으나(임의로 pom.xml 에 추가하지 않아도), scope 태그를 바로잡기 위해서 적어주는 것 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -96,5 +105,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 
 </project>
