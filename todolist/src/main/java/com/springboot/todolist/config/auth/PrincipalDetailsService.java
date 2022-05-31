@@ -36,6 +36,5 @@ public class PrincipalDetailsService implements UserDetailsService {
 		}
 		
 		return new PrincipalDetails(userEntity, new HashMap<String, Object>()); // Authentication 세션 저장 역할
-		
 	}
 }

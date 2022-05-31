@@ -12,7 +12,6 @@
   		select usercode, email, name, username, oauth2_username, password, provider, create_date, update_date
   		from user_mst
   		where username = #{username}
-  		
   	</select>
   	
   	<select id="findOAuth2UserByOAuth2Username" parameterType="String" resultType="com.springboot.todolist.domain.user.User">
@@ -20,4 +19,20 @@
   		from user_mst 
   		where oauth2_username = #{oauth2_username}
   	</select>
+
+	<update id="updateUserByUsername" parameterType="com.springboot.todolist.domain.user.User">
+		update user_mst set password=#{password}, name=#{name}, email=#{email} where username = #{username}
+	</update>
+	<update id="updateUserByUsernameWithoutPassword" parameterType="com.springboot.todolist.domain.user.User">
+		update user_mst set name=#{name}, email=#{email} where username = #{username}
+	</update>
+	
+	<delete id="deleteUserByUsername" parameterType="String">
+		delete from user_mst where username = #{username}
+	</delete>
+	
+	<select id="findPasswordByUsername" parameterType="String" resultType="String">
+		select password from user_mst where username = #{username}
+	</select>
+
 </mapper>

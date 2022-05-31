@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>TODOLIST-회원가입</title>
+<link rel="stylesheet" href="../static/css/auth/signup.css">
 </head>
 <body>
-	<div id="container">
-		<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-			<h1>회원가입</h1>
-			<input type="text" name="username" placeholder="아이디">
+	<div class="toDoTemplateBlock">
+		<div class="titleBlock">TODOLIST</div>
+		<div class="signup-content">
+			<div><Strong>회원가입</Strong></div>
+			<input type="text" name="username" placeholder="아이디 (가입이후 수정불가)">
 			<input type="password" name="password" placeholder="패스워드">
+			<input type="password" name="repassword" placeholder="패스워드 확인">
 			<input type="text" name="name" placeholder="이름">
 			<input type="email" name="email" placeholder="이메일">
-			
-			<button type="button" class="submitBtn">회원가입</button>
-			<button type="button" class="cancelBtn">취소</button>
+			<div class="joinOrCancel">
+				<button type="button" class="submitBtn">가입하기</button>
+				<button type="button" class="cancelBtn">취소</button>
+			</div>
 		</div>
 	</div>
 	<script src="../static/js/auth/signup.js"></script>

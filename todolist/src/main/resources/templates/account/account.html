@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TODOLIST-회원정보수정</title>
+<link rel="stylesheet" href="../static/css/account/account.css">
+</head>
+<body>
+	<div class="toDoTemplateBlock">
+		<div class="titleBlock">TODOLIST</div>
+		<div class="account-content">
+			<div style="margin-bottom: 10px"><Strong>회원정보수정</Strong></div>
+			<div class="items">
+				<div class="items-title">이전 패스워드</div>
+				<input type="password" name="oldPassword" placeholder="이전 패스워드">
+			</div>
+			<div class="items">
+				<div class="items-title">새 패스워드</div>
+				<input type="password" name="newPassword" placeholder="새 패스워드">
+			</div>
+			<div class="items">
+				<div class="items-title">새 패스워드 확인</div>
+				<input type="password" name="newPasswordRepeat" placeholder="새 패스워드 확인">
+			</div>
+			<div class="items">
+				<div class="items-title">이름</div>
+				<input type="text" name="name" placeholder="이름">
+			</div>
+			<div class="items">
+				<div class="items-title">이메일</div>
+				<input type="email" name="email" placeholder="이메일">
+			</div>
+			<div class="okOrCancel">
+				<button type="button" class="updateBtn">수정하기</button>
+				<button type="button" class="cancelBtn">취소</button>
+				<button type="button" class="deleteBtn">회원탈퇴</button>
+			</div>
+		</div>
+	</div>
+	<script src="../static/js/auth/principal.js"></script>
+	<script src="../static/js/account/account.js"></script>
+</body>
+</html>

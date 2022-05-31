@@ -18,6 +18,6 @@ public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(CustomValidationApiException.class) // 해당 예외 클래스를 자동으로 찾기
 	public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
-		return new ResponseEntity<>(new CustomResponseDto<Map<String, String>>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST); // 204
+		return new ResponseEntity<>(new CustomResponseDto<Map<String, String>>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.OK); // 204
 	}
 }

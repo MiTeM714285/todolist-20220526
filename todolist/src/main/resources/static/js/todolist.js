@@ -3,7 +3,19 @@
  */
 
 const toDoTemplateBlock = document.querySelector('.toDoTemplateBlock');
+const memberBtns = document.querySelectorAll('.memberBtn');
 const idArray = [];
+
+// 정보수정 버튼 클릭에 관하여
+memberBtns[0].onclick = () => {
+	location.href="/account";
+}
+
+// 로그아웃 버튼 클릭에 관하여
+memberBtns[1].onclick = () => {
+	location.replace("/logout");
+}
+
 
 load();
 
@@ -136,10 +148,11 @@ function getTodoListItems() { // 각 버튼을 클릭했을때의 이벤트 담�
 				} else {
 					modifyTodo(idByIndex, toDoUpdateBlockInput.value);
 				}
-				
 			}
 		}
 	}
+	
+
 }
 
 function InsertToDoList(content) {
@@ -168,7 +181,7 @@ function InsertToDoList(content) {
 					throw new Error(response.json());
 				}
 			})
-			.then(data => { 
+			.then(() => { 
 				load();
 			})
 			.catch(error => console.log(error));
@@ -264,7 +277,7 @@ function deleteToDoList(id) {
 				throw new Error("비동기 처리 오류");
 			}
 		})
-		.then(data => { load(); })
+		.then(() => { load(); })
 		.catch(error => { console.log(error) });
 }
 
@@ -288,7 +301,7 @@ function modifyTodo(id, content) {
 			throw new Error(response.json());
 		}
 	})
-	.then(data =>{load();})
+	.then(() =>{load();})
 	.catch(error => console.log(error));
 }
 
@@ -307,7 +320,7 @@ function ToDoListIsDone(id) {
 			throw new Error(response.json());
 		}
 	})
-	.then(data => { load(); })
+	.then(() => { load(); })
 	.catch(error => console.log(error));
 }
 
@@ -326,7 +339,7 @@ function ToDoListIsUnDone(id) {
 			throw new Error(response.json());
 		}
 	})
-	.then(data => { load(); })
+	.then(() => { load(); })
 	.catch(error => console.log(error));
 }
 

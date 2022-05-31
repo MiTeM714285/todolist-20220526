@@ -16,9 +16,28 @@ body {
 	flex-direction: column;
 }
 
+.memberBtns {
+	padding: 28px 32px 0px;
+	display: flex;
+	justify-content: space-between;
+}
+
 .toDoHeadBlock {
-	padding: 48px 32px 24px 32px;
+	padding: 24px 32px 24px 32px;
 	border-bottom: 1px solid #e9ecef;
+}
+
+.memberBtn {
+	background : #868e96;
+	border-radius: 5px;
+	color:white;
+	font-size:12px;
+	padding : 4px
+}
+
+.memberBtn:hover {
+	background : #20c997;
+	cursor: pointer;
 }
 
 .toDoHeadBlock h1 {
@@ -36,7 +55,7 @@ body {
 .toDoHeadBlock-tasks-left {
 	color: #20c997;
 	font-size: 18px;
-	margin-top: 40px;
+	margin-top: 30px;
 	font-weight: bold;
 }
 

@@ -1,0 +1,89 @@
+body {
+	background: #e9ecef
+}
+
+.toDoTemplateBlock {
+	width: 512px;
+	height: 768px;
+	position: relative;
+	background-color: white;
+	border-radius: 16px;
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	margin-top: 96px;
+	margin-bottom: 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.titleBlock {
+	margin : 48px 32px;
+	display: flex;
+	justify-content: center;
+	color :  #868e96;
+	font-size:48px;
+}
+
+.account-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width:340px;
+	height:600px;
+}
+
+input {
+	width : 320px;
+	border-radius:5px;
+	border:1px solid rgb(231,231,231);
+	height:40px;
+	font-size:24px;
+	text-align: center;
+	margin:0px 10px 10px;
+}
+
+.okOrCancel {
+	display: flex;
+	justify-content: space-between;
+}
+
+.items-title {
+	margin-left:10px;
+}
+
+.updateBtn {
+	width:94px;
+	height:42px;
+	margin:10px;
+	background : #868e96;
+	border:0;
+	border-radius : 5px;
+	color:white;
+	font-size:20px;
+}
+.cancelBtn {
+	width:94px;
+	height:42px;
+	margin:10px;
+	background : #868e96;
+	border:0;
+	border-radius : 5px;
+	color:white;
+	font-size:20px;
+}
+.deleteBtn {
+	width:94px;
+	height:42px;
+	margin:10px;
+	background :red;
+	border:0;
+	border-radius : 5px;
+	color:white;
+	font-size:20px;
+}
+
+button:hover {
+	cursor: pointer
+}
