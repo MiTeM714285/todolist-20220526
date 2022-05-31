@@ -32,8 +32,8 @@ spring:
             - email
             - profile
           naver:
-            client-id: XlTA6KBy58iS4nmXwyJ1
-            client-secret: CZi6IoIoaO
+            client-id: hGrBuZ7KpSinSGfIaU2L
+            client-secret: p8GmKT0Plb
             scope:
             - email
             - name

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.todolist.handler.ex.CustomValidationApiException;
-import com.springboot.todolist.web.controller.dto.CustomResponseDto;
+import com.springboot.todolist.web.dto.CustomResponseDto;
 
 
 @RestController
@@ -18,6 +18,6 @@ public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(CustomValidationApiException.class) // 해당 예외 클래스를 자동으로 찾기
 	public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
-		return new ResponseEntity<>(new CustomResponseDto<Map<String, String>>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(new CustomResponseDto<Map<String, String>>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST); // 204
 	}
 }

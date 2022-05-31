@@ -1,4 +1,4 @@
-package com.springboot.todolist.web.controller.dto.todolist;
+package com.springboot.todolist.web.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,16 +12,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ToDoListInsertReqDto {
+public class ToDoListUpdateReqDto {
+	@NotNull // int형식은 @NotBlank 사용불가
+	private int id;
 	@NotBlank
 	private String content;
-	
-	public ToDoListMst toToDoListMstEntity(int usercode) {
+	public ToDoListMst toToDoListMstEntity(int id) {
 		return ToDoListMst.builder()
-				.usercode(usercode)
+				.id(id)
 				.content(content)
 				.build();
 	}
-	
-
 }

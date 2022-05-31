@@ -1,4 +1,4 @@
-package com.springboot.todolist.web.controller.dto;
+package com.springboot.todolist.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

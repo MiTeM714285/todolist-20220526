@@ -1,4 +1,4 @@
-package com.springboot.todolist.web.controller.dto.todolist;
+package com.springboot.todolist.web.dto;
 
 
 import java.time.LocalDateTime;

@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.todolist.service.todolist.ToDoListService;
-import com.springboot.todolist.web.controller.dto.CustomResponseDto;
-import com.springboot.todolist.web.controller.dto.todolist.ToDoListInsertReqDto;
-import com.springboot.todolist.web.controller.dto.todolist.ToDoListRespDto;
-import com.springboot.todolist.web.controller.dto.todolist.ToDoListUpdateReqDto;
+import com.springboot.todolist.web.dto.CustomResponseDto;
+import com.springboot.todolist.web.dto.ToDoListInsertReqDto;
+import com.springboot.todolist.web.dto.ToDoListRespDto;
+import com.springboot.todolist.web.dto.ToDoListUpdateReqDto;
 
 import lombok.RequiredArgsConstructor;
 

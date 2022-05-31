@@ -101,20 +101,13 @@ function getTodoListItems() { // 각 버튼을 클릭했을때의 이벤트 담�
 		const toDoItemUpdateBlock = document.querySelectorAll('.toDoItemUpdateBlock');
 		const toDoItemBlock = toDoItemUpdateBlock[i].querySelector('.toDoItemBlock');
 		const toDoUpdateBlock = toDoItemUpdateBlock[i].querySelector('.toDoUpdateBlock');
+		const toDoItemBlockText = toDoItemBlock.querySelector('.toDoItemBlock-text');
+		const toDoUpdateBlockInput = toDoUpdateBlock.querySelector('.toDoUpdateBlock-input');
 		toDoItemBlock.style.display = "none"; // 기존 텍스트뷰는 사라지고
 		toDoUpdateBlock.style.display = ""; // 입력창을 보이도록
 		
-		let idByIndex = idArray[i];
-		
-		getToDoListOne(idByIndex) // 해당 Todo의 content 가져와서 입력창에 넣기
-			.then(result => {
-				let toDoData = result.data;
-				const toDoUpdateBlockInput = toDoUpdateBlock.querySelector('.toDoUpdateBlock-input');
-				toDoUpdateBlockInput.value = toDoData.content
-			})
-			.catch(error => {
-				console.log(error)
-			})
+		//일반 Todo표시글의 텍스트내용을 업데이트 수정텍스트란으로 옮기기
+		toDoUpdateBlockInput.value = toDoItemBlockText.textContent;
 		}
 	}
 	
@@ -122,11 +115,7 @@ function getTodoListItems() { // 각 버튼을 클릭했을때의 이벤트 담�
 	const toDoUpdateBlockCancel = document.querySelectorAll('.toDoUpdateBlock-cancel');
 	for (let i = 0; i < toDoUpdateBlockCancel.length; i++) {
 	toDoUpdateBlockCancel[i].onclick = () => {
-			const toDoItemUpdateBlock = document.querySelectorAll('.toDoItemUpdateBlock');
-			const toDoItemBlock = toDoItemUpdateBlock[i].querySelector('.toDoItemBlock');
-			const toDoUpdateBlock = toDoItemUpdateBlock[i].querySelector('.toDoUpdateBlock');
-			toDoItemBlock.style.display = "";
-			toDoUpdateBlock.style.display = "none";
+			ViewVisible_UpdateDisappear(i);
 		}
 	}
 	
@@ -140,7 +129,14 @@ function getTodoListItems() { // 각 버튼을 클릭했을때의 이벤트 담�
 			if (toDoUpdateBlockInput.value.length > 42) {
 				alert("현재 " + toDoUpdateBlockInput.value.length + "자로, 42자 내로 작성 가능합니다.")
 			} else {
-				modifyTodo(idByIndex, toDoUpdateBlockInput.value);
+				const toDoItemBlock = toDoItemUpdateBlock[i].querySelector('.toDoItemBlock');
+				const toDoItemBlockText = toDoItemBlock.querySelector('.toDoItemBlock-text');
+				if(toDoItemBlockText.textContent == toDoUpdateBlockInput.value) { // 수정 전 값과 수정 후 값이 같다면
+					ViewVisible_UpdateDisappear(i);
+				} else {
+					modifyTodo(idByIndex, toDoUpdateBlockInput.value);
+				}
+				
 			}
 		}
 	}
@@ -191,12 +187,24 @@ function InsertVisible_PlusDisappear() {
 	toDoInsertBlock.style.display = ''; // 입력란을 보이도록
 }
 
+
 function PlusVisible_InsertDisappear() {
 	const toDoPlusBlock = document.querySelector('.toDoPlusBlock');
 	const toDoInsertBlock = document.querySelector('.toDoInsertBlock');
 	toDoPlusBlock.style.display = ''; // + 입력란을 안보이게하고
 	toDoInsertBlock.style.display = 'none'; // + 버튼을 보이도록
 }
+
+// 일반 Todo표시글 ON 업데이트 수정텍스트란 OFF
+function ViewVisible_UpdateDisappear(i) {
+	const toDoItemUpdateBlock = document.querySelectorAll('.toDoItemUpdateBlock');
+	const toDoItemBlock = toDoItemUpdateBlock[i].querySelector('.toDoItemBlock');
+	const toDoUpdateBlock = toDoItemUpdateBlock[i].querySelector('.toDoUpdateBlock');
+	toDoItemBlock.style.display = ""; // 일반 Todo표시글은 보이고
+	toDoUpdateBlock.style.display = "none"; // 업데이트 수정 텍스트란은 사라지도록
+}
+
+
 
 async function getToDoListOne(id) {
 	const url = `/api/v1/todo/${id}`;

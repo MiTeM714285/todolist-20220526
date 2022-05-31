@@ -2,9 +2,10 @@ package com.springboot.todolist.service.todolist;
 
 import java.util.List;
 
-import com.springboot.todolist.web.controller.dto.todolist.ToDoListInsertReqDto;
-import com.springboot.todolist.web.controller.dto.todolist.ToDoListRespDto;
-import com.springboot.todolist.web.controller.dto.todolist.ToDoListUpdateReqDto;
+import com.springboot.todolist.web.dto.ToDoListInsertReqDto;
+import com.springboot.todolist.web.dto.ToDoListRespDto;
+import com.springboot.todolist.web.dto.ToDoListUpdateReqDto;
+
 
 public interface ToDoListService {
 	

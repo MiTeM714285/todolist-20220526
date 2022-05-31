@@ -39,7 +39,13 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
 		}
 
 		String oAuth2_username = createOAuth2Username(provider, attributes);
-		User userEntity = userRepository.findOAuth2UserByOAuth2Username(oAuth2_username);
+		User userEntity = null;
+		try {
+			userEntity = userRepository.findOAuth2UserByOAuth2Username(oAuth2_username);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(userEntity == null) { // 해당 객체가 비어있다면
 			// 회원가입 진행
 			User user = User.builder()
@@ -52,8 +58,13 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
 					.build();
 			
 
-			if(userRepository.insertUser(user) == 0) { // user_mst DB에 insert
-				throw new OAuth2AuthenticationException(new OAuth2Error("400", "회원가입 실패","/auth/signup"), "회원가입 실패");
+			try {
+				if(userRepository.save(user) == 0) { // user_mst DB에 insert
+					throw new OAuth2AuthenticationException(new OAuth2Error("400", "회원가입 실패","/auth/signup"), "회원가입 실패");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			// user.xml의  useGeneratedKeys="true" keyProperty="user_code" 로 인하여 usercode 값 자동부여
 			userEntity = user;
