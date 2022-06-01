@@ -8,7 +8,7 @@ public class PageController {
 	
 	@GetMapping("/index")
 	public String index() {
-		return "todoList/todoList";
+		return "todolist/todolist";
 	}
 	
 	@GetMapping("/auth/signin") // 로그인
@@ -21,7 +21,7 @@ public class PageController {
 		return "auth/signup";
 	}
 	
-	@GetMapping("/account") // 로그인
+	@GetMapping("/account") // 회원정보
 	public String account() {
 		return "account/account";
 	}

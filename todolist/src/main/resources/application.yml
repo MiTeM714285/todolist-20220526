@@ -1,6 +1,7 @@
 server:
   port: 8000 # 서버 포트 설정
   servlet:
+    context-path: /
     encoding: # 인코딩 UTF-8 설정
       charset: UTF-8
       enabled: true
